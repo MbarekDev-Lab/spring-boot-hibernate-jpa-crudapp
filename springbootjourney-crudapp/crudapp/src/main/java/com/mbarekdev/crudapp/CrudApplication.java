@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class CrudApplication {
 
@@ -18,12 +20,26 @@ public class CrudApplication {
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
         return runner -> {
             // System.out.println(" Hello Mbarek from CrudApplication ");
-           // createObjStudent(studentDAO);
-            findStudentById(studentDAO, 1);
-            findAllStudents(studentDAO);
-            updateStudent(studentDAO, 1);
-            deleteStudent(studentDAO, 1);
+            createMultipleStudents(studentDAO);
         };
+    }
+
+    private void createMultipleStudents(StudentDAO studentDAO) {
+//        String[][] studentData = {
+//                {"Mbarek", " MBarekDevLab", "mbarek@DevCode.com"},
+//                {"Bonita", " applebum", "applebum@DevCode.com"},
+//                {"Marry", "bumApple", "applebum@DevCode.com"}
+//        };
+        List<Student> studentList = List.of(
+                new Student("Mbarek", " MBarekDevLab", "mbarek@DevCode.com"),
+                new Student("Bonita", " applebum", "applebum@DevCode.com"),
+                new Student("Marry", "bumApple", "applebum@DevCode.com")
+        );
+        for (Student student : studentList) {
+            // save the student object
+            System.out.println(" Saving the student object ..." + student);
+            studentDAO.save(student);
+        }
     }
 
     private void createObjStudent(StudentDAO studentDAO) {
