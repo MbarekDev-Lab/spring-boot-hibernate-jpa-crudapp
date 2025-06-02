@@ -21,8 +21,21 @@ public class CrudApplication {
         return runner -> {
             // System.out.println(" Hello Mbarek from CrudApplication ");
             //createMultipleStudents(studentDAO);
-            queryForStudents(studentDAO);
+            //queryForStudents(studentDAO);
+            queryForStudentsByLastName(studentDAO);
+
         };
+    }
+
+    private void queryForStudentsByLastName(StudentDAO studentDAO) {
+        List<Student> theStudents = studentDAO.findByLastName("MBarekDevLab");
+
+        // display list of students with lastname MBarekDevLab
+        for (Student s : theStudents){
+            System.out.println(s);
+        }
+
+
     }
 
     private void createMultipleStudents(StudentDAO studentDAO) {
@@ -88,4 +101,7 @@ public class CrudApplication {
             System.out.println(tempStd);
         }
     }
+
+
+
 }
