@@ -45,17 +45,21 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public List<Student> findByLastName(String theLastName) {
-        // create a query
-        TypedQuery<Student> typedQuery = entityManager.createQuery("FROM Student WHERE lastName=:theData", Student.class);
+       // "FROM Student s WHERE LOWER(s.lastName) LIKE LOWER(:theData)" // searching with case-insensitivity
+       // typedQuery.setParameter("theData", "%" + theLastName + "%");
 
-        // set query parameters ( lastName=:theData)
+        // Create a typed JPQL query
+        TypedQuery<Student> typedQuery = entityManager.createQuery(
+                "FROM Student s WHERE s.lastName = :theData", Student.class
+        );
+
+        // Set the parameter for lastName
         typedQuery.setParameter("theData", theLastName);
 
-
-        // return query result;
-
+        // Execute and return results
         return typedQuery.getResultList();
     }
+
 
     @Override
     @Transactional
