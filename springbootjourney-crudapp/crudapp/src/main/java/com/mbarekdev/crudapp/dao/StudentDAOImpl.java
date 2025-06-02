@@ -36,9 +36,9 @@ public class StudentDAOImpl implements StudentDAO {
     @Override
     public List<Student> findAll() {
         // All JPQL syntax is based on entity name and entity fields
-        //return entityManager.createQuery("FROM Student", Student.class).getResultList();
-        // return entityManager.createQuery("SELECT s FROM Student s", Student.class).getResultList();
-        TypedQuery<Student> typedQuery = entityManager.createQuery("SELECT S FROM Student S WHERE S.email LIKE'%mbarekDev,com'", Student.class);
+        TypedQuery<Student> typedQuery = entityManager.createQuery("FROM Student ORDER BY lastName ASC", Student.class);
+        //TypedQuery<Student> typedQuery =  entityManager.createQuery("SELECT s FROM Student s", Student.class);
+        // TypedQuery<Student> typedQuery = entityManager.createQuery("SELECT S FROM Student S WHERE S.email LIKE'%mbarekDev,com'", Student.class);
         return typedQuery.getResultList();
     }
 

@@ -20,7 +20,8 @@ public class CrudApplication {
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
         return runner -> {
             // System.out.println(" Hello Mbarek from CrudApplication ");
-            createMultipleStudents(studentDAO);
+            //createMultipleStudents(studentDAO);
+            queryForStudents(studentDAO);
         };
     }
 
@@ -77,5 +78,14 @@ public class CrudApplication {
     private void deleteStudent(StudentDAO dao, int id) {
         dao.delete(id);
         System.out.println("Deleted student with ID: " + id);
+    }
+
+    private void queryForStudents(StudentDAO studentDAO) {
+        // get a list of students
+        List<Student> theStudents = studentDAO.findAll();
+        //desplay list of Students
+        for (Student tempStd : theStudents) {
+            System.out.println(tempStd);
+        }
     }
 }
