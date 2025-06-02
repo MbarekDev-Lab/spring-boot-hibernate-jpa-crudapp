@@ -2,6 +2,7 @@ package com.mbarekdev.crudapp.dao;
 
 import com.mbarekdev.crudapp.entity.Student;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,8 +35,11 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public List<Student> findAll() {
+        // All JPQL syntax is based on entity name and entity fields
         //return entityManager.createQuery("FROM Student", Student.class).getResultList();
-        return entityManager.createQuery("SELECT s FROM Student s", Student.class).getResultList();
+        // return entityManager.createQuery("SELECT s FROM Student s", Student.class).getResultList();
+        TypedQuery<Student> typedQuery = entityManager.createQuery("SELECT S FROM Student S WHERE S.email LIKE'%mbarekDev,com'", Student.class);
+        return typedQuery.getResultList();
     }
 
     @Override
