@@ -19,11 +19,13 @@ public class CrudApplication {
     @Bean
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
         return runner -> {
-            // System.out.println(" Hello Mbarek from CrudApplication ");
+            System.out.println(" Hello Mbarek from CrudApplication ");
             createMultipleStudents(studentDAO);
             //queryForStudents(studentDAO);
             //queryForStudentsByLastName(studentDAO);
-
+            //updateStudent(studentDAO , 2);
+            //deleteStudent(studentDAO, 2);
+            //deleteAllStudent(studentDAO);
         };
     }
 
@@ -34,8 +36,6 @@ public class CrudApplication {
         for (Student s : theStudents) {
             System.out.println(s);
         }
-
-
     }
 
     private void createMultipleStudents(StudentDAO studentDAO) {
@@ -52,12 +52,10 @@ public class CrudApplication {
         for (Student student : studentList) {
             // save the student object
             System.out.println(" Saving the student object ..." + student);
-            //studentDAO.save(student);
+            studentDAO.save(student);
         }
 
-        //updateStudent(studentDAO , 2);
-        //deleteStudent(studentDAO, 2);
-        deleteAllStudent(studentDAO);
+
     }
 
 
