@@ -45,8 +45,8 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public List<Student> findByLastName(String theLastName) {
-       // "FROM Student s WHERE LOWER(s.lastName) LIKE LOWER(:theData)" // searching with case-insensitivity
-       // typedQuery.setParameter("theData", "%" + theLastName + "%");
+        // "FROM Student s WHERE LOWER(s.lastName) LIKE LOWER(:theData)" // searching with case-insensitivity
+        // typedQuery.setParameter("theData", "%" + theLastName + "%");
 
         // Create a typed JPQL query
         TypedQuery<Student> typedQuery = entityManager.createQuery(
@@ -62,15 +62,22 @@ public class StudentDAOImpl implements StudentDAO {
 
 
     @Override
-    @Transactional
+    @Transactional // adding the transactinal annotation since we are performing an update
     public void update(Student student) {
         entityManager.merge(student);
     }
 
     @Override
-    @Transactional
+    @Transactional // adding the transactinal annotation since we are performing a deleted
     public void delete(int id) {
         Student student = entityManager.find(Student.class, id);
         entityManager.remove(student);
+    }
+
+    @Override
+    @Transactional
+    public int deleteAll() {
+        int numRowsDeleted = entityManager.createQuery("DELETE FROM Student").executeUpdate();
+        return numRowsDeleted;
     }
 }

@@ -20,9 +20,9 @@ public class CrudApplication {
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
         return runner -> {
             // System.out.println(" Hello Mbarek from CrudApplication ");
-            //createMultipleStudents(studentDAO);
+            createMultipleStudents(studentDAO);
             //queryForStudents(studentDAO);
-            queryForStudentsByLastName(studentDAO);
+            //queryForStudentsByLastName(studentDAO);
 
         };
     }
@@ -31,7 +31,7 @@ public class CrudApplication {
         List<Student> theStudents = studentDAO.findByLastName("MBarekDevLab");
 
         // display list of students with lastname MBarekDevLab
-        for (Student s : theStudents){
+        for (Student s : theStudents) {
             System.out.println(s);
         }
 
@@ -52,9 +52,14 @@ public class CrudApplication {
         for (Student student : studentList) {
             // save the student object
             System.out.println(" Saving the student object ..." + student);
-            studentDAO.save(student);
+            //studentDAO.save(student);
         }
+
+        //updateStudent(studentDAO , 2);
+        //deleteStudent(studentDAO, 2);
+        deleteAllStudent(studentDAO);
     }
+
 
     private void createObjStudent(StudentDAO studentDAO) {
         // create student obj
@@ -102,6 +107,10 @@ public class CrudApplication {
         }
     }
 
+    private void deleteAllStudent(StudentDAO studentDAO) {
+        int numOfRowsAreDeleted = studentDAO.deleteAll();
+        System.out.println("Deleted row count: " + numOfRowsAreDeleted);
+    }
 
 
 }
