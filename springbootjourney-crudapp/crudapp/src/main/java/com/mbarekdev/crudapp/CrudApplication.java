@@ -8,28 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.util.List;
-/*
-in application.properties file:
-#Add logging configs to display SQL statements:
-# Show SQL statements
-logging.level.org.hibernate.SQL=debug
-
-# Show SQL bind parameters (actual values for ? placeholders)
-logging.level.org.hibernate.orm.jdbc.bind=trace
-
-#pretty print the SQL:
-spring.jpa.properties.hibernate.format_sql=true
-
-# Configure JPA/Hibernate to auto-create, update, validate the tables (Drops all existing tables (if any).)
-#Good for development/testing, but not recommended for production. (Re-creates them from your JPA entity classes)
-#spring.jpa.hibernate.ddl-auto=create
-
-# the "update" config will keep existing data in the table (Automatically adds new columns or tables to match the JPA entities.)
-#spring.jpa.hibernate.ddl-auto=update
-
-#Best Practice for Production: (manage schema changes with Flyway or Liquibase for controlled database migrations.)
-spring.jpa.hibernate.ddl-auto=validate
- */
 
 @SpringBootApplication
 public class CrudApplication {
