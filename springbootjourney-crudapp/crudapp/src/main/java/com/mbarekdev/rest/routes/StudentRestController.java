@@ -2,8 +2,12 @@ package com.mbarekdev.rest.routes;
 
 import com.mbarekdev.crudapp.dao.StudentDAO;
 import com.mbarekdev.crudapp.entity.Student;
+import com.mbarekdev.rest.error.StudentErrorResponse;
+import com.mbarekdev.rest.error.StudentNotFoundException;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -45,9 +49,20 @@ public class StudentRestController {
     // Return a single mock student by index
     @GetMapping("/mock-students/{id}")
     public Student getMockStudentById(@PathVariable int id) {
-        if (id < 0 || id >= mockStudents.size()) {
+        if ((id < 0) || (id >= mockStudents.size())) {
             throw new RuntimeException("Student ID not found: " + id);
         }
         return mockStudents.get(id);
+    }
+
+    // handler exceptions using @ExceptionHandler
+    @ExceptionHandler
+    public ResponseEntity<StudentErrorResponse> handleExeption(StudentNotFoundException studentNotFoundException) {
+        StudentErrorResponse errorResponse = new StudentErrorResponse();
+        errorResponse.setStatuse(HttpStatus.NOT_FOUND.value());
+        errorResponse.setMessage(studentNotFoundException.getMessage());
+        errorResponse.setTimeStamp(System.currentTimeMillis());
+        // return responseEntity
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 }
