@@ -59,7 +59,7 @@ public class StudentRestController {
     @ExceptionHandler
     public ResponseEntity<StudentErrorResponse> handleExeption(StudentNotFoundException studentNotFoundException) {
         StudentErrorResponse errorResponse = new StudentErrorResponse();
-        errorResponse.setStatuse(HttpStatus.NOT_FOUND.value());
+        errorResponse.setStatus(HttpStatus.NOT_FOUND.value());
         errorResponse.setMessage(studentNotFoundException.getMessage());
         errorResponse.setTimeStamp(System.currentTimeMillis());
         // return responseEntity

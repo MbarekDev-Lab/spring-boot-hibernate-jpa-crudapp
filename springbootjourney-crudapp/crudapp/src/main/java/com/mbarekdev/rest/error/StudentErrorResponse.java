@@ -1,7 +1,5 @@
 package com.mbarekdev.rest.error;
 
-import com.mbarekdev.crudapp.entity.Student;
-
 public class StudentErrorResponse {
     private int statuse;
     private String message;
@@ -16,11 +14,8 @@ public class StudentErrorResponse {
         this.timeStamp = timeStamp;
     }
 
-    public int getStatuse() {
-        return statuse;
-    }
 
-    public void setStatuse(int statuse) {
+    public void setStatus(int statuse) {
         this.statuse = statuse;
     }
 
