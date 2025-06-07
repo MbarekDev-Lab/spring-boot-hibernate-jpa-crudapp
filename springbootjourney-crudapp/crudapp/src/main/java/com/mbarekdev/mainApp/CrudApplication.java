@@ -1,15 +1,17 @@
-package com.mbarekdev.crudapp;
+package com.mbarekdev.mainApp;
 
 import com.mbarekdev.crudapp.dao.StudentDAO;
 import com.mbarekdev.crudapp.entity.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 
 import java.util.List;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.mbarekdev")
+@EntityScan(basePackages = "com.mbarekdev.crudapp.entity")
 public class CrudApplication {
 
     public static void main(String[] args) {
@@ -20,7 +22,9 @@ public class CrudApplication {
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
         return runner -> {
             System.out.println(" Hello Mbarek from CrudApplication ");
-            createMultipleStudents(studentDAO);
+            findAllStudents(studentDAO);
+            //createMultipleStudents(studentDAO);
+            //studentDAO.findAll().forEach(System.out::println);
             //queryForStudents(studentDAO);
             //queryForStudentsByLastName(studentDAO);
             //updateStudent(studentDAO , 2);
@@ -54,10 +58,7 @@ public class CrudApplication {
             System.out.println(" Saving the student object ..." + student);
             studentDAO.save(student);
         }
-
-
     }
-
 
     private void createObjStudent(StudentDAO studentDAO) {
         // create student obj
