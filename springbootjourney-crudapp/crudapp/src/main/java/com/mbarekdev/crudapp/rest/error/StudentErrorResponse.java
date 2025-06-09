@@ -1,4 +1,4 @@
-package com.mbarekdev.rest.error;
+package com.mbarekdev.crudapp.rest.error;
 
 public class StudentErrorResponse {
     private int statuse;

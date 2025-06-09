@@ -1,4 +1,4 @@
-package com.mbarekdev.rest.controllers;
+package com.mbarekdev.crudapp.rest.controllers;
 
 import com.mbarekdev.crudapp.dao.EmployeeDAO;
 import com.mbarekdev.crudapp.entity.Employee;

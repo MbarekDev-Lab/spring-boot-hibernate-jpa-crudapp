@@ -1,4 +1,4 @@
-package com.mbarekdev.rest.error;
+package com.mbarekdev.crudapp.rest.error;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
