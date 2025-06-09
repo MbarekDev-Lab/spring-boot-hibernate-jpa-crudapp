@@ -2,10 +2,10 @@ package com.mbarekdev.crudapp.entity;
 
 import jakarta.persistence.*;
 
-//@Entity
-//@Table(name = "student")
-public class Student {
-    //define fields;
+@Entity
+@Table(name = "employee")
+public class Employee {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -20,17 +20,15 @@ public class Student {
     @Column(name = "email")
     private String email;
 
-    //define Constructors
-    public Student (){
+    public Employee() {
     }
 
-    public Student(String firstName, String lastName, String email) {
+    public Employee(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
 
-    // define getters and setters
     public int getId() {
         return id;
     }
@@ -61,17 +59,5 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    // define toString method
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                '}';
     }
 }

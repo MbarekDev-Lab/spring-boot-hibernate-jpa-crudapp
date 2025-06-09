@@ -18,7 +18,7 @@ public class CrudApplication {
         SpringApplication.run(CrudApplication.class, args);
     }
 
-    @Bean
+    /*@Bean
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
         return runner -> {
             System.out.println(" Hello Mbarek from CrudApplication ");
@@ -31,7 +31,7 @@ public class CrudApplication {
             //deleteStudent(studentDAO, 2);
             //deleteAllStudent(studentDAO);
         };
-    }
+    }*/
 
     private void queryForStudentsByLastName(StudentDAO studentDAO) {
         List<Student> theStudents = studentDAO.findByLastName("MBarekDevLab");

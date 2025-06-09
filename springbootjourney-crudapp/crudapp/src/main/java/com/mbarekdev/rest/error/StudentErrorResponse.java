@@ -19,6 +19,10 @@ public class StudentErrorResponse {
         this.statuse = statuse;
     }
 
+    public int getStatuse() {
+        return statuse;
+    }
+
     public String getMessage() {
         return message;
     }

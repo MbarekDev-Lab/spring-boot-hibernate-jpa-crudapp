@@ -1,22 +1,18 @@
-package com.mbarekdev.rest.routes;
+package com.mbarekdev.rest.controllers;
 
 import com.mbarekdev.crudapp.dao.StudentDAO;
 import com.mbarekdev.crudapp.entity.Student;
-import com.mbarekdev.rest.error.StudentErrorResponse;
-import com.mbarekdev.rest.error.StudentNotFoundException;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@RestController
-@RequestMapping("/api")
-public class StudentRestController {
 
+/*@RestController
+@RequestMapping("/stud")
+public class StudentRestController {
     private final StudentDAO studentDAO;
     private List<Student> mockStudents;
 
@@ -48,21 +44,14 @@ public class StudentRestController {
 
     // Return a single mock student by index
     @GetMapping("/mock-students/{id}")
-    public Student getMockStudentById(@PathVariable int id) {
-        if ((id < 0) || (id >= mockStudents.size())) {
-            throw new RuntimeException("Student ID not found: " + id);
+    public Student getMockStudentById(@PathVariable int studentId) {
+        if ((studentId < 0) || (studentId >= mockStudents.size())) {
+            throw new RuntimeException("Student ID not found: " + studentId);
         }
-        return mockStudents.get(id);
+        return mockStudents.get(studentId);
     }
 
-    // handler exceptions using @ExceptionHandler
-    @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleExeption(StudentNotFoundException studentNotFoundException) {
-        StudentErrorResponse errorResponse = new StudentErrorResponse();
-        errorResponse.setStatus(HttpStatus.NOT_FOUND.value());
-        errorResponse.setMessage(studentNotFoundException.getMessage());
-        errorResponse.setTimeStamp(System.currentTimeMillis());
-        // return responseEntity
-        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
-    }
-}
+
+
+
+}*/
