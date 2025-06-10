@@ -1,13 +1,4 @@
-package com.mbarekdev.crudapp.rest.controllers;
-
-import com.mbarekdev.crudapp.dao.StudentDAO;
-import com.mbarekdev.crudapp.entity.Student;
-import jakarta.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.mbarekdev.crudapp.rest.routes.studentsControler;
 
 
 /*@RestController

@@ -1,5 +1,6 @@
-package com.mbarekdev.crudapp.dao;
+package com.mbarekdev.crudapp.dao.daoImp;
 
+import com.mbarekdev.crudapp.dao.StudentDAO;
 import com.mbarekdev.crudapp.entity.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;

@@ -10,10 +10,9 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.List;
 
-@SpringBootApplication(scanBasePackages = "com.mbarekdev")
-@EntityScan(basePackages = "com.mbarekdev.crudapp.entity")
+@SpringBootApplication(scanBasePackages = "com.mbarekdev.crudapp")
+@EntityScan("com.mbarekdev.crudapp.entity")
 public class CrudApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(CrudApplication.class, args);
     }

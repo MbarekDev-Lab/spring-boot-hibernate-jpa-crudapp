@@ -1,14 +1,14 @@
-package com.mbarekdev.crudapp.service;
+package com.mbarekdev.crudapp.dao;
 
 import com.mbarekdev.crudapp.entity.Employee;
-import com.mbarekdev.crudapp.entity.Student;
+
 
 import java.util.List;
 
 public interface EmployeeService {
     List<Employee> findAll();
 
-    void save(Student theStudent);
+    Employee save(Employee theEmployee);
 
     Employee findById(int id);
 
@@ -16,7 +16,9 @@ public interface EmployeeService {
 
     void update(Employee student);
 
-    void delete(int id);
+    void deleteById(int id);
+
+    void deleteById();
 
     int deleteAll();
 }
