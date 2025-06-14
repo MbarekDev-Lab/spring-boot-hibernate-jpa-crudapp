@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-@RestController
-@RequestMapping("/api")
+//@RestController
+//@RequestMapping("/api")
 public class EmployeeRestController {
 
     private final EmployeeService employeeService;
-    private ObjectMapper objectMapper;
+    private final ObjectMapper objectMapper;
 
     @Autowired
     public EmployeeRestController(EmployeeService employeeService, ObjectMapper theObjectMapper) {
