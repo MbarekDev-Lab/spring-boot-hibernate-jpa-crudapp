@@ -4,6 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.mbarekdev.crudapp.entity.Employee;
 import com.mbarekdev.crudapp.service.EmployeeService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +26,11 @@ public class EmployeeRestController {
         this.objectMapper = theObjectMapper;
     }
 
+    @Operation(summary = "Get all employees", description = "Returns a list of all employees")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the employees"),
+            @ApiResponse(responseCode = "404", description = "No employees found")
+    })
     @GetMapping("/employees")
     public List<Employee> findAll() {
         return employeeService.findAll();
