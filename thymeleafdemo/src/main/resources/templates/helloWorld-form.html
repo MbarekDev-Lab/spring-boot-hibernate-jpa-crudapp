@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Hello World Form</title>
+    <title>Hello World Form</title>
 </head>
 <body>
 <h2>Form Example</h2>
 
-<form th:action="@{/processForm}" method="GET">
-  Name: <input type="text" name="studentName" />
-  <input type="submit" value="Submit" />
+<!-- Make sure the action URL matches your controller mapping -->
+<form th:action="@{/processFormVersionTwo}" method="get">
+    Name: <input type="text" name="studentName"/>
+    <input type="submit" value="Submit"/>
 </form>
+
 </body>
 </html>
