@@ -7,10 +7,15 @@
 <h2>Form Example</h2>
 
 <!-- Make sure the action URL matches your controller mapping -->
-<form th:action="@{/processFormVersionThree}" method="get">
-    Name: <input type="text" name="studentName"/>
+<!-- Submits the form to the controller method via GET -->
+
+<form th:action="@{/processFormVersionThree}" method="POST">
+    Student Name: <input type="text" name="studentName"/>
     <input type="submit" value="Submit"/>
 </form>
+
+<!-- <form th:action="@{/processFormVersionTwo}" method="GET">
+     <form th:action="@{/processFormVersionThree}" method="GET">  -->
 
 </body>
 </html>
