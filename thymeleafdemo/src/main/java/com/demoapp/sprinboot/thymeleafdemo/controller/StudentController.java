@@ -29,7 +29,7 @@ public class StudentController {
         // add a List of Countries to the Model
         theModel.addAttribute("countries", countries);
         // add the list of languages to the model:
-        theModel.addAttribute("languages", languages) ;
+        theModel.addAttribute("languages", languages);
         return "student-form";  // Thymeleaf template name
     }
 
