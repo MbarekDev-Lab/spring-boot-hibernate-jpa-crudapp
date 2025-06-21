@@ -18,6 +18,10 @@ public class StudentController {
     @Value("${languages}")
     private List<String> languages;
 
+    @Value("${systems}")
+    private List<String> systems;
+
+
     // @RequestMapping("/processStudentForm") // This maps both GET and POST by default
     // @PostMapping("/processStudentForm") // Accepts only POST
     @GetMapping("/showStudentForm")
@@ -30,6 +34,9 @@ public class StudentController {
         theModel.addAttribute("countries", countries);
         // add the list of languages to the model:
         theModel.addAttribute("languages", languages);
+        // add the List of Systems to the model
+        theModel.addAttribute("systems", systems);
+
         return "student-form";  // Thymeleaf template name
     }
 
