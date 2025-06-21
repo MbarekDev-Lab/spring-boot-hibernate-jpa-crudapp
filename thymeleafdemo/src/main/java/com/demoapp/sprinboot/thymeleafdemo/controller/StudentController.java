@@ -28,12 +28,12 @@ public class StudentController {
         return "student-form";  // Thymeleaf template name
     }
 
-    /*@PostMapping("/processStudentForm")
+    @PostMapping("/processStudentForm")
     public String processStudentForm(@ModelAttribute("student") Student theStudent) {
         // Log the input data to console
         System.out.println("Student: " + theStudent.getFirstName() + " " + theStudent.getLastName() + " from " + theStudent.getCountry());
         return "student-confirmation";  //Confirmation page template name
-    }*/
+    }
 
 
 }
