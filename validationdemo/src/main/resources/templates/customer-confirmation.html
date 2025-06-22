@@ -7,6 +7,11 @@
 <body>
 <h2>Thank you for registering!</h2>
 <h2> The Customer is confirmed : </h2>
-<span th:text="${customer.firstName + ' ' + customer.lastName}"></span>
+The Customer is confirmed : <span th:text="${customer.firstName + ' ' + customer.lastName}"></span>
+
+<br> <br>
+Free passes : <span th:text="${customer.freePasses}"/>
+
+
 </body>
 </html>
