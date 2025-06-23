@@ -19,7 +19,6 @@ public class Customer {
     @CourseCode(value = "MbarekDev", message = "Must start with MbarekDev")
     private String courseCode;
 
-
     public String getFirstName() {
         return firstName;
     }
