@@ -1,7 +1,7 @@
-package com.mbarekDev.springboot.cruddemo.service;
+package com.mbarekDev.springboot.thymeleafdemo.service;
 
-import com.mbarekDev.springboot.cruddemo.dao.EmployeeRepository;
-import com.mbarekDev.springboot.cruddemo.entity.Employee;
+import com.mbarekDev.springboot.thymeleafdemo.dao.EmployeeRepository;
+import com.mbarekDev.springboot.thymeleafdemo.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

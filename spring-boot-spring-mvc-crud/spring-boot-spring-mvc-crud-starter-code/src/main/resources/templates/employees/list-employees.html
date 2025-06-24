@@ -11,20 +11,25 @@
 <div class="container">
     <h1> Employee Dirctory : </h1>
     <hr>
+    <!--  Add a button -->
+    <a th:href="@{/employees/showFormForAdd}"
+       class="btn btn-primary btn-sm mb-3">
+        Add Employee
+    </a>
 
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Email </th>
+            <th>Email</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="tempEmployee : ${employees}">
-            <td  th:text="${tempEmployee.firstName}"/>
-            <td  th:text="${tempEmployee.lastName}"/>
-            <td  th:text="${tempEmployee.email}"/>
+            <td th:text="${tempEmployee.firstName}"/>
+            <td th:text="${tempEmployee.lastName}"/>
+            <td th:text="${tempEmployee.email}"/>
 
         </tr>
         </tbody>
