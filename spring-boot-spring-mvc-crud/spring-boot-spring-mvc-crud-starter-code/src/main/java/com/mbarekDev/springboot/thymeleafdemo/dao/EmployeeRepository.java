@@ -1,10 +1,16 @@
 package com.mbarekDev.springboot.thymeleafdemo.dao;
 
 import com.mbarekDev.springboot.thymeleafdemo.entity.Employee;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+import java.util.List;
 
-    // that's it ... no need to write any code LOL!
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+    // add method to sort with lastName
+    public List<Employee> findAllByOrderByLastNameAsc();
+//    default List<Employee> findAllByLastNameAsc() {
+//        return findAll(Sort.by(Sort.Direction.ASC, "lastName"));
+//    }
 
 }

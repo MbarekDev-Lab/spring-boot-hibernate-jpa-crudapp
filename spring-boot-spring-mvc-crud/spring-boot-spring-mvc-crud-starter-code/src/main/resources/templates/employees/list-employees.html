@@ -24,13 +24,13 @@
             <th>Last Name</th>
             <th>Email</th>
         </tr>
+
         </thead>
         <tbody>
         <tr th:each="tempEmployee : ${employees}">
             <td th:text="${tempEmployee.firstName}"/>
             <td th:text="${tempEmployee.lastName}"/>
             <td th:text="${tempEmployee.email}"/>
-
         </tr>
         </tbody>
 
