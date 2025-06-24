@@ -40,10 +40,18 @@ public class EmployeeController {
         //get the Employee from the service
         Employee theEmloyee = employeeService.findById(theId);
         // set employee in the model to prepopulate the form
-        theModel.addAttribute("employee",theEmloyee);
+        theModel.addAttribute("employee", theEmloyee);
 
         return "employees/employee-form";
     }
+
+    @GetMapping("/showFormForDelete")
+    public String showFormForDelete(@RequestParam("employeeId") int theId) {
+        //delete the Employee ;
+        employeeService.deleteById(theId);
+        return "redirect:/employees/list";
+    }
+
 
     @PostMapping("/save")
     public String saveEmployee(@ModelAttribute("employee") Employee theEmployee) {
