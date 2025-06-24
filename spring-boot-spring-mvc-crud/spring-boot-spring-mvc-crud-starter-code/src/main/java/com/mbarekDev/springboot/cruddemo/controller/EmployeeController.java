@@ -22,12 +22,9 @@ public class EmployeeController {
     public String listEmployees(Model theModel){
         //get the employees from db;
         List<Employee> theEmployees = employeeService.findAll();
-
         //add that to the spring model
         theModel.addAttribute("employees",theEmployees);
         return "list-employees";
     }
-
-
 
 }
