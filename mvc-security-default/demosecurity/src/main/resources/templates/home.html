@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Mbarek Dev Home Company</title>
 </head>
     <body>
         <h2> Mbarek Dev Home Page Yohooo</h2>
-
         <hr>
-        Welcome Home Page!
+
+        <p>
+            Welcome Home Page!
+        </p>
+
+        <!-- Logout btn-->
+    <form action="#" th:action="@{/logout}" method="POST">
+        <input type="submit" value="logout"/>
+    </form>
     </body>
 </html>

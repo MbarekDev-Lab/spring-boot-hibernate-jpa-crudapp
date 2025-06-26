@@ -43,7 +43,9 @@ public SecurityFilterChain filterChain(HttpSecurity httpSecurity)throws Exceptio
                     .loginPage("/showMyLoginPage")
                     .loginProcessingUrl("/authenticateTheUser")
                     .permitAll()
-            ).build();
+            )
+            .logout(logout->logout.permitAll())
+            .build();
 }
 
 }
