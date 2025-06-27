@@ -36,7 +36,9 @@ public InMemoryUserDetailsManager userDetailsManager(){
 @Bean
 public SecurityFilterChain filterChain(HttpSecurity httpSecurity)throws Exception{
     return httpSecurity.authorizeHttpRequests(config-> config
-           // .requestMatchers("/")
+            .requestMatchers("/").hasRole("EMPLOYEE")
+            .requestMatchers("/leaders/**").hasRole("MANAGER")
+            .requestMatchers("/systems/**").hasRole("ADMIN")
             .anyRequest()
             .authenticated())
             .formLogin(from -> from
