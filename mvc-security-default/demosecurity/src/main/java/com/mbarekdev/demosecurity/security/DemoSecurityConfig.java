@@ -10,8 +10,6 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class DemoSecurityConfig {
-
-
 @Bean
 public InMemoryUserDetailsManager userDetailsManager(){
     UserDetails john = User.builder()
@@ -46,7 +44,8 @@ public SecurityFilterChain filterChain(HttpSecurity httpSecurity)throws Exceptio
                     .loginProcessingUrl("/authenticateTheUser")
                     .permitAll()
             )
-            .logout(logout->logout.permitAll())
+            .logout(logout->logout.permitAll()
+            ).exceptionHandling(configer ->configer.accessDeniedPage("/access-denied"))
             .build();
 }
 
