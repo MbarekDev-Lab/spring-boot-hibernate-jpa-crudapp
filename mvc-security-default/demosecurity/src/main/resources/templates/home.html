@@ -19,16 +19,30 @@
 
 <hr>
 <!-- Link to /leaders -->
-<p>
-    <a th:href="@{/leaders}">Leadership Meeting</a>
-    (only for Manager peeps)
-</p>
+<div sec:authorize="hasRole('MANAGER')">
+    <p>
+        <a th:href="@{/leaders}">Leadership Meeting</a>
+        (only for Manager peeps)
+    </p>
+</div>
 
-<!-- Link to /admin -->
-<p>
-    <a th:href="@{/systems}">IT Systems Meeting</a>
-    (only for Admin peeps)
-</p>
+<!-- Add a Link to /admin -->
+<div sec:authorize="hasRole('ADMIN')">
+    <p>
+        <a th:href="@{/systems}">IT Systems Meeting</a>
+        (only for Admin peeps)
+    </p>
+</div>
+
+<!-- Add a Link to /leaders ...  -->
+<hr>
+
+<div sec:authorize="hasRole('MANAGER')">
+    <p>
+        <a th:href="@{/manager}">Manager Meeting</a>
+        (only for Manager peeps)
+    </p>
+</div>
 
 <hr>
 <!-- Logout button -->
