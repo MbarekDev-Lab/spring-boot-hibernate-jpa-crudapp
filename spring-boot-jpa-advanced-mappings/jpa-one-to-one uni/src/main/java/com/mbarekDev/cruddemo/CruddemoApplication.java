@@ -18,10 +18,22 @@ public class CruddemoApplication {
     @Bean
     public CommandLineRunner commandLineRunner(AppDAO appDAO) {
         return args -> {
-            createInstructor(appDAO);
+            //createInstructorr(appDAO);
+            findInstructor(appDAO);
 
             //System.out.println("Hello World from CommandLineRunner");
         };
+    }
+
+    private void findInstructor(AppDAO appDAO) {
+        int theId = 1;
+        System.out.println("Finding instructoer id :  " + theId);
+
+        Instructor tempInstruictor = appDAO.findInstructorById(theId);
+
+        System.out.println("tempInnstructor : " + tempInstruictor);
+        System.out.println("the associated instructor detail only  : " + tempInstruictor.getInstructorDetail());
+
     }
 
     private void createInstructor(AppDAO appDAO) {
@@ -42,5 +54,25 @@ public class CruddemoApplication {
         System.out.println("Done !");
 
 
+    }
+
+    private void createInstructorr(AppDAO appDAO) {
+
+        // create the instructor
+        Instructor tempInstructor = new Instructor(
+                "mbarek", "benne", "mbarek@gmail.com");
+
+        // create the instructor detail
+        InstructorDetail tempInstructorDetail = new InstructorDetail(
+                "https://www.mbarek.com", "surfing");
+
+        // associate the instructor with instructor detail
+        tempInstructor.setInstructorDetail(tempInstructorDetail);
+
+        // save the instructor (this will also save instructor detail because of CascadeType.ALL)
+        System.out.println("Saving instructor: " + tempInstructor);
+        appDAO.save(tempInstructor);
+
+        System.out.println("Done!");
     }
 }
