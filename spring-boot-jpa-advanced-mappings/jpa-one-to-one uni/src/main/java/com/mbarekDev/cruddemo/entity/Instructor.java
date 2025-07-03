@@ -11,87 +11,100 @@ import jakarta.persistence.*;
 
     // generated getter / setter methods
 
-    @Entity
-    @Table(name = "instructor")
-    public class Instructor {
+@Entity
+@Table(name="instructor")
+public class Instructor {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(name = "id")
-        private int id;
+    // annotate the class as an entity and map to db table
 
-        @Column(name = "first_name")
-        private String firstName;
+    // define the fields
 
-        @Column(name = "last_name")
-        private String lastName;
+    // annotate the fields with db column names
 
-        @Column(name = "email")
-        private String email;
+    // ** set up mapping to InstructorDetail entity
 
-        @OneToOne(cascade = CascadeType.ALL)
-        @JoinColumn(name = "instructor_detail_id")
-        private InstructorDetail instructorDetail;
+    // create constructors
 
-        public Instructor() {
-        }
+    // generate getter/setter methods
 
-        public Instructor(String firstName, String lastName, String email) {
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.email = email;
-        }
+    // generate toString() method
 
-        // getters and setters
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
+    private int id;
 
-        public int getId() {
-            return id;
-        }
+    @Column(name="first_name")
+    private String firstName;
 
-        public void setId(int id) {
-            this.id = id;
-        }
+    @Column(name="last_name")
+    private String lastName;
 
-        public String getFirstName() {
-            return firstName;
-        }
+    @Column(name="email")
+    private String email;
 
-        public void setFirstName(String firstName) {
-            this.firstName = firstName;
-        }
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "instructor_detail_id")
+    private InstructorDetail instructorDetail;
 
-        public String getLastName() {
-            return lastName;
-        }
+    public Instructor() {
 
-        public void setLastName(String lastName) {
-            this.lastName = lastName;
-        }
-
-        public String getEmail() {
-            return email;
-        }
-
-        public void setEmail(String email) {
-            this.email = email;
-        }
-
-        public InstructorDetail getInstructorDetail() {
-            return instructorDetail;
-        }
-
-        public void setInstructorDetail(InstructorDetail instructorDetail) {
-            this.instructorDetail = instructorDetail;
-        }
-
-        @Override
-        public String toString() {
-            return "Instructor{" +
-                    "id=" + id +
-                    ", firstName='" + firstName + '\'' +
-                    ", lastName='" + lastName + '\'' +
-                    ", email='" + email + '\'' +
-                    ", instructorDetail=" + instructorDetail +
-                    '}';
-        }
     }
+
+    public Instructor(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public InstructorDetail getInstructorDetail() {
+        return instructorDetail;
+    }
+
+    public void setInstructorDetail(InstructorDetail instructorDetail) {
+        this.instructorDetail = instructorDetail;
+    }
+
+    @Override
+    public String toString() {
+        return "Instructor{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", instructorDetail=" + instructorDetail +
+                '}';
+    }
+}

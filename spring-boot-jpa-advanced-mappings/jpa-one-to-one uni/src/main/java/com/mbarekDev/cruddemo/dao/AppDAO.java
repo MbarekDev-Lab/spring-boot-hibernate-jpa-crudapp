@@ -1,6 +1,7 @@
 package com.mbarekDev.cruddemo.dao;
 
 import com.mbarekDev.cruddemo.entity.Instructor;
+import com.mbarekDev.cruddemo.entity.InstructorDetail;
 
 public interface AppDAO {
 
@@ -8,6 +9,11 @@ public interface AppDAO {
 
     Instructor findInstructorById(int theId);
 
-    void deleteInstructiorById(int theId);
+    void deleteInstructorById(int theId);
+
+    InstructorDetail findInstructorDetailById(int theId);
+
+    void deleteInstructorDetailById(int theId);
+
 
 }

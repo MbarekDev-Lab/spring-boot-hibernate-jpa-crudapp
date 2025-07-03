@@ -17,70 +17,98 @@ public class CruddemoApplication {
 
     @Bean
     public CommandLineRunner commandLineRunner(AppDAO appDAO) {
-        return args -> {
-            //createInstructorr(appDAO);
-            //findInstructor(appDAO);
-            deleteInstructor(appDAO);
 
+        return runner -> {
+            // createInstructor(appDAO);
 
-            //System.out.println("Hello World from CommandLineRunner");
+            // findInstructor(appDAO);
+
+            // deleteInstructor(appDAO);
+
+            // findInstructorDetail(appDAO);
+
+            deleteInstructorDetail(appDAO);
         };
     }
 
-    private void deleteInstructor(AppDAO appDAO) {
-        int theId = 1;
-        System.out.println("Deleting instructor id : " + theId);
-        appDAO.deleteInstructiorById(theId);
+    private void deleteInstructorDetail(AppDAO appDAO) {
+
+        int theId = 2;
+        System.out.println("Deleting instructor detail id: " + theId);
+
+        appDAO.deleteInstructorDetailById(theId);
+
         System.out.println("Done!");
+    }
 
+    private void findInstructorDetail(AppDAO appDAO) {
 
+        // get the instructor detail object
+        int theId = 2;
+        InstructorDetail tempInstructorDetail = appDAO.findInstructorDetailById(theId);
+
+        // print the instructor detail
+        System.out.println("tempInstructorDetail: " + tempInstructorDetail);
+
+        // print the associated instructor
+        System.out.println("the associated instructor: " + tempInstructorDetail.getInstructor());
+
+        System.out.println("Done!");
+    }
+
+    private void deleteInstructor(AppDAO appDAO) {
+
+        int theId = 1;
+        System.out.println("Deleting instructor id: " + theId);
+
+        appDAO.deleteInstructorById(theId);
+
+        System.out.println("Done!");
     }
 
     private void findInstructor(AppDAO appDAO) {
-        int theId = 1;
-        System.out.println("Finding instructoer id :  " + theId);
 
-        Instructor tempInstruictor = appDAO.findInstructorById(theId);
+        int theId = 2;
+        System.out.println("Finding instructor id: " + theId);
 
-        System.out.println("tempInnstructor : " + tempInstruictor);
-        System.out.println("the associated instructor detail only  : " + tempInstruictor.getInstructorDetail());
+        Instructor tempInstructor = appDAO.findInstructorById(theId);
+
+        System.out.println("tempInstructor: " + tempInstructor);
+        System.out.println("the associated instructorDetail only: " + tempInstructor.getInstructorDetail());
 
     }
 
     private void createInstructor(AppDAO appDAO) {
 
-        // create the instructor
-        Instructor tempInstructor = new Instructor("Chad", "Darby", "mbarek@gmail.com");
+		/*
+		// create the instructor	tempInstructor =
+				new Instructor("Chad", "Darby", "darby@gg.com");
 
-        // create the instructor detail
-        InstructorDetail tempInstructorDetail = new InstructorDetail("https://www.mb.com", "codding");
-
-        // associate the instructor
-        // NOTE this will also save the details object
-        // because of CascadeTypes.ALL
-
-        System.out.println("Saving instructor : " + tempInstructor);
-        appDAO.save(tempInstructor);
-
-        System.out.println("Done !");
-
-
-    }
-
-    private void createInstructorr(AppDAO appDAO) {
+		// create the instructor detail
+		InstructorDetail tempInstructorDetail =
+				new InstructorDetail(
+						"http://www.gg.com/youtube",
+						"code!!!");
+		*/
 
         // create the instructor
-        Instructor tempInstructor = new Instructor(
-                "mbarek", "benne", "mbarek@gmail.com");
+        Instructor tempInstructor =
+                new Instructor("Madhu", "Patel", "madhu@gg.com");
 
         // create the instructor detail
-        InstructorDetail tempInstructorDetail = new InstructorDetail(
-                "https://www.mbarek.com", "surfing");
+        InstructorDetail tempInstructorDetail =
+                new InstructorDetail(
+                        "http://www.gg.com/youtube",
+                        "Guitar");
 
-        // associate the instructor with instructor detail
+        // associate the objects
         tempInstructor.setInstructorDetail(tempInstructorDetail);
 
-        // save the instructor (this will also save instructor detail because of CascadeType.ALL)
+        // save the instructor
+        //
+        // NOTE: this will ALSO save the details object
+        // because of CascadeType.ALL
+        //
         System.out.println("Saving instructor: " + tempInstructor);
         appDAO.save(tempInstructor);
 
