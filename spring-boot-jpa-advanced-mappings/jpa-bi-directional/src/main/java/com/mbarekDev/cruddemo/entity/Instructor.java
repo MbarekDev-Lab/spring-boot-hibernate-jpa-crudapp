@@ -1,16 +1,6 @@
 package com.mbarekDev.cruddemo.entity;
 
 import jakarta.persistence.*;
-    // annotate the class as an entity and map to db table
-
-    // define the feilds
-
-    //annotate the feilds with db column name
-
-    // create constructors
-
-    // generated getter / setter methods
-
 @Entity
 @Table(name="instructor")
 public class Instructor {

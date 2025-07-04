@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Optional;
+
 @SpringBootApplication
 public class CruddemoApplication {
 
@@ -26,9 +28,9 @@ public class CruddemoApplication {
 
             // deleteInstructor(appDAO);
 
-            // findInstructorDetail(appDAO);
+            findInstructorDetail(appDAO);
 
-            deleteInstructorDetail(appDAO);
+            //deleteInstructorDetail(appDAO);
         };
     }
 
@@ -43,16 +45,20 @@ public class CruddemoApplication {
     }
 
     private void findInstructorDetail(AppDAO appDAO) {
+        int theId = 3;
+        Optional<InstructorDetail> optionalDetail = Optional.ofNullable(appDAO.findInstructorDetailById(theId));
 
-        // get the instructor detail object
-        int theId = 2;
-        InstructorDetail tempInstructorDetail = appDAO.findInstructorDetailById(theId);
+        if (optionalDetail.isPresent()) {
+            InstructorDetail tempInstructorDetail = optionalDetail.get();
 
-        // print the instructor detail
-        System.out.println("tempInstructorDetail: " + tempInstructorDetail);
+            // print the instructor detail
+            System.out.println("tempInstructorDetail: " + tempInstructorDetail);
 
-        // print the associated instructor
-        System.out.println("the associated instructor: " + tempInstructorDetail.getInstructor());
+            // print the associated instructor
+            System.out.println("the associated instructor: " + tempInstructorDetail.getInstructor());
+        } else {
+            System.out.println("InstructorDetail with ID " + theId + " not found.");
+        }
 
         System.out.println("Done!");
     }
