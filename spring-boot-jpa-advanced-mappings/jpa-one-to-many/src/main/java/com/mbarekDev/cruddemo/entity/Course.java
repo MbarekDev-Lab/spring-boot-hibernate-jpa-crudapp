@@ -13,7 +13,9 @@ public class Course {
     @Column(name = "title")
     private String title;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH , CascadeType.REFRESH})
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+                            CascadeType.DETACH , CascadeType.REFRESH})
+
     @JoinColumn(name = "instructor_id")
     private Instructor instructor;
 
