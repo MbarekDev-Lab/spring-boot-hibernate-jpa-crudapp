@@ -3,23 +3,37 @@ package com.mbarekDev.cruddemo.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "course")
+@Table(name="course")
 public class Course {
+
+    // define our fields
+
+    // define constructors
+
+    // define getter setters
+
+    // define toString
+
+    // annotate fields
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name="id")
     private int id;
 
-    @Column(name = "title")
+    @Column(name="title")
     private String title;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
-                            CascadeType.DETACH , CascadeType.REFRESH})
-
-    @JoinColumn(name = "instructor_id")
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE,
+            CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name="instructor_id")
     private Instructor instructor;
 
-    public Course(String title){
+    public Course() {
+
+    }
+
+    public Course(String title) {
         this.title = title;
     }
 
@@ -50,8 +64,8 @@ public class Course {
     @Override
     public String toString() {
         return "Course{" +
-                "title='" + title + '\'' +
-                ", id=" + id +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 '}';
     }
 }
