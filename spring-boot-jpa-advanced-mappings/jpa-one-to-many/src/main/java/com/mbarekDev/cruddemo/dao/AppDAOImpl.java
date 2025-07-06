@@ -5,6 +5,7 @@ import com.mbarekDev.cruddemo.entity.Instructor;
 import com.mbarekDev.cruddemo.entity.InstructorDetail;
 import jakarta.persistence.EntityManager;
 
+import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,6 +17,7 @@ import java.util.List;
 public class AppDAOImpl implements AppDAO {
 
     // define field for entity manager
+    @PersistenceContext
     private final EntityManager entityManager;
 
     // inject entity manager using constructor injection
@@ -101,6 +103,13 @@ public class AppDAOImpl implements AppDAO {
         query.setParameter("data", theId);
 
         return query.getSingleResult();
+    }
+
+    // everytime we modify the db, we should use Transactional
+    @Override
+    @Transactional
+    public void update(Instructor tempInstructor) {
+        entityManager.merge(tempInstructor);
     }
 
 
