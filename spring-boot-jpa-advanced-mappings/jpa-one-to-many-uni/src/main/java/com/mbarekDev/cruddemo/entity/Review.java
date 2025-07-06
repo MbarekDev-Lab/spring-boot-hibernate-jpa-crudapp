@@ -16,6 +16,9 @@ public class Review {
     private int id;
     private String comment;
 
+    public Review() {
+    }
+
     public Review(String comment) {
         this.comment = comment;
     }

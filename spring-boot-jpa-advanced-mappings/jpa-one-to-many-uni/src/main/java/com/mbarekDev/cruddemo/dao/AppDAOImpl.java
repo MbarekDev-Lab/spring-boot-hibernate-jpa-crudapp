@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class AppDAOImpl implements AppDAO {
@@ -146,6 +147,22 @@ public class AppDAOImpl implements AppDAO {
     @Override
     public void save(Course theCourse) {
         entityManager.persist(theCourse);
+    }
+
+    @Override
+    public Course findCourseAndReviewByCourseId(int theId) {
+        // create a query
+        TypedQuery<Course> query = entityManager.createQuery(
+                "select c from Course c " +
+                        "JOIN FETCH c.reviewList " +
+                        "WHERE c.id = :data", Course.class);
+
+        // set parameter
+        query.setParameter("data", theId);
+
+        // execute query and return result
+        Course course = query.getSingleResult();
+        return course;
     }
 
 }
