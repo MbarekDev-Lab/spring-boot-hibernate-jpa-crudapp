@@ -3,6 +3,7 @@ package com.mbarekDev.cruddemo.dao;
 import com.mbarekDev.cruddemo.entity.Course;
 import com.mbarekDev.cruddemo.entity.Instructor;
 import com.mbarekDev.cruddemo.entity.InstructorDetail;
+import com.mbarekDev.cruddemo.entity.Student;
 
 import java.util.List;
 
@@ -35,5 +36,7 @@ public interface AppDAO {
     Course findCourseAndReviewByCourseId(int theId);
 
     Course findCourseAndStudentsById(int theId);
+
+    Student findStudentAndCoursesByStudentId(int theId);
 
 }

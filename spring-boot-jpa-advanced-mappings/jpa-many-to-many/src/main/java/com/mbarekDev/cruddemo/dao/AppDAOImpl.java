@@ -3,6 +3,7 @@ package com.mbarekDev.cruddemo.dao;
 import com.mbarekDev.cruddemo.entity.Course;
 import com.mbarekDev.cruddemo.entity.Instructor;
 import com.mbarekDev.cruddemo.entity.InstructorDetail;
+import com.mbarekDev.cruddemo.entity.Student;
 import jakarta.persistence.EntityManager;
 
 import jakarta.persistence.PersistenceContext;
@@ -166,7 +167,6 @@ public class AppDAOImpl implements AppDAO {
     }
 
 
-
     @Override
     public Course findCourseAndStudentsById(int theId) {
         TypedQuery<Course> query = entityManager.createQuery(
@@ -176,6 +176,18 @@ public class AppDAOImpl implements AppDAO {
         query.setParameter("data", theId);
 
         List<Course> results = query.getResultList();
+        return results.isEmpty() ? null : results.getFirst();
+    }
+
+    @Override
+    public Student findStudentAndCoursesByStudentId(int theId) {
+        TypedQuery<Student> query = entityManager.createQuery(
+                "select s from Student s " +
+                        "JOIN FETCH s.courses " +
+                        "WHERE s.id = :data", Student.class);
+        query.setParameter("data", theId);
+
+        List<Student> results = query.getResultList();
         return results.isEmpty() ? null : results.getFirst();
     }
 
