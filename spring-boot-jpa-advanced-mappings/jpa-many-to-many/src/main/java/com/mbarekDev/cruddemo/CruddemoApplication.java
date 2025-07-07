@@ -22,9 +22,24 @@ public class CruddemoApplication {
     public CommandLineRunner commandLineRunner(AppDAO appDAO) {
 
         return runner -> {
-            createCourseAndStudent(appDAO);
-
+            //createCourseAndStudent(appDAO);
+            findCourseAndStudents(appDAO);
         };
+    }
+
+
+    private void findCourseAndStudents(AppDAO appDAO) {
+        int theId = 10;
+        Course tempCourse = appDAO.findCourseAndStudentsById(theId);
+
+        if (tempCourse == null) {
+            System.out.println("No course found with id: " + theId);
+            return;
+        }
+
+        System.out.println("Loaded course : " + tempCourse);
+        System.out.println("Students: " + tempCourse.getStudents());
+        System.out.println("Done!");
     }
 
     private void createCourseAndStudent(AppDAO appDAO) {
@@ -63,7 +78,6 @@ public class CruddemoApplication {
     }
 
     private void retrievCoursAndReviews(AppDAO appDAO) {
-
         // get the course and reviews
         int theId = 10;
         Course tempCourse = appDAO.findCourseAndReviewByCourseId(theId);
@@ -73,8 +87,6 @@ public class CruddemoApplication {
         System.out.println(tempCourse.getReviewList());
 
         System.out.println("Done !");
-
-
     }
 
     private void createCourseAndReviews(AppDAO appDAO) {
