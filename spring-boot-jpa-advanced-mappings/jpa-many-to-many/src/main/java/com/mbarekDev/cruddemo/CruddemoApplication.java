@@ -25,9 +25,19 @@ public class CruddemoApplication {
             // findCourseAndStudents(appDAO);
             //findStudentsAndCourses(appDAO);
             // createStudentIfNotExists(appDAO);
-             addMoreCoursesForStudent(appDAO);
+            //addMoreCoursesForStudent(appDAO);
             //deleteCourse(appDAO);
+            deleteStudent(appDAO);
         };
+    }
+
+    private void deleteStudent(AppDAO appDAO) {
+        int theId = 1;
+
+        System.out.println(" deleting student id : " + theId);
+        appDAO.deleteStudentById(theId);
+        System.out.println("Done !");
+
     }
 
     private void createStudentIfNotExists(AppDAO appDAO) {
