@@ -191,4 +191,9 @@ public class AppDAOImpl implements AppDAO {
         return results.isEmpty() ? null : results.getFirst();
     }
 
+    @Override
+    @Transactional
+    public void update(Student tempStudent) {
+        entityManager.merge(tempStudent);
+    }
 }

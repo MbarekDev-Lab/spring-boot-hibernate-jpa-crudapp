@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity
 @Table(name = "student")
 public class Student {
@@ -80,15 +81,14 @@ public class Student {
     }
 
     // add convenience method
-
     public void addCourse(Course theCourse) {
-
         if (courses == null) {
             courses = new ArrayList<>();
         }
-
         courses.add(theCourse);
-        theCourse.addStudent(this);
+
+        //  bidirectional relationship
+        theCourse.getStudents().add(this);
     }
 
     @Override

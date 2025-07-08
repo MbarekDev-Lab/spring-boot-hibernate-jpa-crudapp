@@ -8,7 +8,6 @@ import java.util.List;
 @Entity
 @Table(name = "course")
 public class Course {
-
     // define our fields
 
     // define constructors
@@ -93,6 +92,7 @@ public class Course {
         this.students = students;
     }
 
+
     // add a convenience method
     public void addReview(Review theReview) {
         if (reviewList == null) {
@@ -107,6 +107,10 @@ public class Course {
         }
         students.add(student);
 
+        if (student.getCourses() == null) {
+            student.setCourses(new ArrayList<>());
+        }
+        student.getCourses().add(this);
     }
 
     @Override

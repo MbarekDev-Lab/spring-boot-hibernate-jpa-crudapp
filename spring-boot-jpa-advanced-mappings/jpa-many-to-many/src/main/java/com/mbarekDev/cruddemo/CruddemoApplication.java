@@ -23,8 +23,50 @@ public class CruddemoApplication {
         return runner -> {
             // createCourseAndStudent(appDAO);
             // findCourseAndStudents(appDAO);
-            findStudentsAndCourses(appDAO);
+            //findStudentsAndCourses(appDAO);
+            // createStudentIfNotExists(appDAO);
+             addMoreCoursesForStudent(appDAO);
+            //deleteCourse(appDAO);
         };
+    }
+
+    private void createStudentIfNotExists(AppDAO appDAO) {
+        Student student = new Student("Mbarek", "Benraiss", "m@b.com");
+        Course tempCourse = new Course("Temp Course");
+
+        student.addCourse(tempCourse);
+        appDAO.save(tempCourse); // cascade saves student
+    }
+
+    // automatically updates both sides
+    private void addMoreCoursesForStudent(AppDAO appDAO) {
+        int theId = 1;
+        Student tempStudent = appDAO.findStudentAndCoursesByStudentId(theId);
+
+        if (tempStudent == null) {
+            System.out.println("No student found with ID: " + theId);
+            return;
+        }
+
+        Student student = appDAO.findStudentAndCoursesByStudentId(theId);
+        Course newCourse = new Course("Unique Title " + System.currentTimeMillis());
+        student.addCourse(newCourse);
+
+        appDAO.update(student);
+
+        // create more courses
+        Course tempCourse1 = new Course("new Course open00 ");
+        Course tempCourse2 = new Course("new Course open01 ");
+        Course tempCourse3 = new Course("new Course open02 ");
+
+        // add course to Student
+        tempStudent.addCourse(tempCourse1);
+        tempStudent.addCourse(tempCourse2);
+        tempStudent.addCourse(tempCourse3);
+
+        System.out.println("saving student : " + tempStudent);
+        System.out.println("associated courses : " + tempStudent.getCourses());
+        appDAO.update(tempStudent);
     }
 
     private void findStudentsAndCourses(AppDAO appDAO) {
@@ -77,10 +119,7 @@ public class CruddemoApplication {
             //log.warn("Course '{}' already exists, skipping insert.", tempCourse.getTitle());
         }
 
-
         System.out.println("Done !");
-
-
     }
 
     private void deleteCourseAndReviews(AppDAO appDAO) {
